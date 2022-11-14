@@ -5,8 +5,10 @@ using UnityEngine;
 public class PinController : CreatureController
 {
     [SerializeField]
-    private GameObject _square; // 핀의 막대 부분.
-    private float _moveTime = 0.2f;
+    private GameObject  _square; // 핀의 막대 부분.
+    private float       _moveTime = 0.2f;
+
+    public StageController _stage;
 
     protected override void Init()
     {
@@ -42,6 +44,15 @@ public class PinController : CreatureController
             transform.position = Vector3.Lerp(start, end, percent);
 
             yield return null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Pin"))
+        {
+            Debug.Log("OnTriggerEnter2D Pin");
+            _stage.GameOver();
         }
     }
 }

@@ -20,6 +20,8 @@ public class PinSpawner : MonoBehaviour
     private StageController     _stageController;
     private UI_TargetText       _targetTextUI;
 
+    private StageController _stage;
+
     private void Start()
     { 
         _targetObject = GameObject.FindGameObjectWithTag("Target");
@@ -31,6 +33,8 @@ public class PinSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (_stage.IsGameOver) return;
+
         if (Input.GetMouseButtonDown(0) && _throwAblePins.Count > 0)
         {
             // thorwalbePins 리스트에 저장된 첫 번째 핀을 과녁에 배치
@@ -46,10 +50,11 @@ public class PinSpawner : MonoBehaviour
         }
     }
 
-    public void SetUp()
+    public void SetUp(StageController s)
     {
         _throwAblePins = new List<PinController>();
         _stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<StageController>();
+        _stage = s;
     }
 
     private void SetInPinStuckToTarget(GameObject pin, float angle)
@@ -70,11 +75,15 @@ public class PinSpawner : MonoBehaviour
 
     public void SpawnStuckPin(float angle, int index)
     {
-        GameObject pin = Managers.Game.Spawn(Define.WorldObject.Pin, "Pin/Pin");
+        GameObject pinObject = Managers.Game.Spawn(Define.WorldObject.Pin, "Pin/Pin");
 
-        SetInPinStuckToTarget(pin, angle);
+        PinController pin = pinObject.GetComponent<PinController>();
 
-        _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pin.transform);
+        SetInPinStuckToTarget(pinObject, angle);
+
+        pin._stage = this._stage;
+
+        _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pinObject.transform);
     }
 
     public void SpawnThrowAlbePin(Vector3 pos, int index)
@@ -84,6 +93,7 @@ public class PinSpawner : MonoBehaviour
         
         // Pin 컴포넌트 정보를 얻어와 SetUp() 메소드 호출
         PinController pin = pinObject.GetComponent<PinController>();
+        pin._stage = this._stage;
         
         _throwAblePins.Add(pin);
 
