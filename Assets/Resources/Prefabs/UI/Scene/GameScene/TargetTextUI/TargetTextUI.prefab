@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7335212733661576287}
   - component: {fileID: 7335212733661576284}
   - component: {fileID: 4485888062451647054}
+  - component: {fileID: 2017298758824896299}
   m_Layer: 5
   m_Name: TargetTextUI
   m_TagString: TargetTextUI
@@ -188,5 +189,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b24d1a5503e846640aec34c69582dc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2017298758824896299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7335212733661576285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5471cf4670f53a498d89504f2ea9663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

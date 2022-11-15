@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -7,13 +8,14 @@ public class Managers : MonoBehaviour
     static Managers s_instance; // 유일성이 보장된다
     static Managers Instance { get { Init(); return s_instance; } } // 유일한 매니저를 갖고온다
 
-    DataManager _data = new DataManager();
-    PoolManager _pool = new PoolManager();
+    DataManager     _data = new DataManager();
+    PoolManager     _pool = new PoolManager();
     ResourceManager _resource = new ResourceManager();
-    SceneManagerEx _scene = new SceneManagerEx();
-    SoundManager _sound = new SoundManager();
-    UIManager _ui = new UIManager();
-    GameManagerEx _game = new GameManagerEx();
+    SceneManagerEx  _scene = new SceneManagerEx();
+    SoundManager    _sound = new SoundManager();
+    UIManager       _ui = new UIManager();
+    GameManagerEx   _game = new GameManagerEx();
+    StageManager    _stage = new StageManager();   
 
     // AdManager _ad = new AdManager();
 
@@ -24,6 +26,7 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static UIManager UI { get { return Instance._ui; } }
+    public static StageManager Stage { get { return Instance._stage; } }
     // public static AdManager Ad { get { return Instance._ad; } }
 
     void Start()
@@ -45,6 +48,14 @@ public class Managers : MonoBehaviour
             {
                 go = new GameObject { name = "@Managers" };
                 go.AddComponent<Managers>();
+
+                GameObject s = GameObject.Find("@StageManager");
+                if (s == null)
+                {
+                    s = new GameObject { name = "@StageManager" };
+                    s.GetOrAddComponent<StageManager>();
+                    s.transform.SetParent(go.transform);
+                }
             }
 
             DontDestroyOnLoad(go);
@@ -53,6 +64,7 @@ public class Managers : MonoBehaviour
             s_instance._data.Init();
             s_instance._pool.Init();
             s_instance._sound.Init();
+            s_instance._stage.Init();
 
             GameObject ad = GameObject.Find("@BaanerAd");
 
@@ -72,5 +84,6 @@ public class Managers : MonoBehaviour
         UI.Clear();
         Pool.Clear();
         Game.Clear();
+        Stage.Clear();
     }
 }

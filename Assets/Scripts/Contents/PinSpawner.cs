@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class PinSpawner : MonoBehaviour
 {
-    [Header("common")]
-    private GameObject  _pin;
-    private GameObject  _targetObject;
+    private GameObject  _pin;                               // pin Object
+    private GameObject  _targetObject;                      // target Object
+                                                            
+    private Transform   _targetTransfrom;                   // 과녁 오브젝트의 Transform
+    private Vector3     _targetPosition = Vector3.up * 2;   // 과녁의 위치
 
-    private Transform   _targetTransfrom;                     // 과녁 오브젝트의 Transform
-    private Vector3     _targetPosition = Vector3.up * 2;     // 과녁의 위치
+    private float       _targetRadius = 0.8f;               // 과녁의 반지름
+    private float       _pinLength = 1.5f;                  // 핀 막대 길이
+    private float       _bottomAngle = 270.0f;              // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
 
-    private float       _targetRadius = 0.8f;                 // 과녁의 반지름
-    private float       _pinLength = 1.5f;                    // 핀 막대 길이
-    private float       _bottomAngle = 270.0f;                // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
-
-    private List<PinController> _throwAblePins;         // 하단에 생성되는 던져야할 오브젝트 리스트
-    private StageController     _stageController;
+    private List<PinController> _throwAblePins;             // 하단에 생성되는 던져야할 오브젝트 리스트
+    private StageManager        _stageController;
     private UI_TargetText       _targetTextUI;
 
-    private StageController _stage;
+    private StageManager _stage;
 
     private void Start()
     { 
@@ -29,6 +28,11 @@ public class PinSpawner : MonoBehaviour
         _targetTransfrom = _targetObject.transform;
 
         _targetTextUI = GameObject.FindGameObjectWithTag("TargetTextUI").GetComponent<UI_TargetText>();
+
+        _stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<StageManager>();
+        if (_stageController == null)
+            Debug.Log("Nulkl");
+            
     }
 
     private void Update()
@@ -48,13 +52,16 @@ public class PinSpawner : MonoBehaviour
                 _throwAblePins[i].MoveOneStep(_stageController._pinDistance);
             }
         }
+
+        if (_throwAblePins.Count == 0)
+        {
+            _stageController.OnClearEvent.Invoke(true);
+        }
     }
 
-    public void SetUp(StageController s)
+    public void SetUp()
     {
         _throwAblePins = new List<PinController>();
-        _stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<StageController>();
-        _stage = s;
     }
 
     private void SetInPinStuckToTarget(GameObject pin, float angle)
@@ -81,8 +88,6 @@ public class PinSpawner : MonoBehaviour
 
         SetInPinStuckToTarget(pinObject, angle);
 
-        pin._stage = this._stage;
-
         _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pinObject.transform);
     }
 
@@ -93,8 +98,6 @@ public class PinSpawner : MonoBehaviour
         
         // Pin 컴포넌트 정보를 얻어와 SetUp() 메소드 호출
         PinController pin = pinObject.GetComponent<PinController>();
-        pin._stage = this._stage;
-        
         _throwAblePins.Add(pin);
 
         _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pinObject.transform);
