@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class StageManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class StageManager : MonoBehaviour
     private PinSpawner  _pinSpawner;    // pinSpawner
     private Camera      _camera;        // MainCamera
     private GameObject  _target;        // target Object
+    private GameObject  _targetTextUI;  // targetTextUI Object
     private Rotator     _targetRotator; // target Object Rotator
     private Rotator     _panelRotator;  // panel Object Rotator
     
@@ -26,26 +28,17 @@ public class StageManager : MonoBehaviour
     public Action<bool> OnClearEvent;
 
 
-    public void Init()
+    public void SetUp(GameObject target, GameObject pinSpawner, GameObject targetTextUI)
     {
-        OnClearEvent -= ClearGame;
-        OnClearEvent += ClearGame;
+        _target = target;
+        p_pinSpawner = pinSpawner;
+        _targetTextUI = targetTextUI;
 
-        // Get MainCamera
-        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
-        // Get TargetObject
-        _target = GameObject.FindGameObjectWithTag("Target");
-        _targetRotator = _target.GetComponent<Rotator>();
-
-        // Get Pinspawner
-        p_pinSpawner = GameObject.FindGameObjectWithTag("PinSpawner");
+        _pinSpawner = p_pinSpawner.GetComponent<PinSpawner>();
 
         if (p_pinSpawner != null)
         {
             _pinSpawner = p_pinSpawner.GetComponent<PinSpawner>();
-
-            _pinSpawner.SetUp();
 
             // 게임 하단에 배치되는 던져야 하는 핀 오브젝트 생성
             for (int i = 0; i < _throwablePinCount; ++i)
@@ -62,6 +55,14 @@ public class StageManager : MonoBehaviour
                 _pinSpawner.SpawnStuckPin(angle, _throwablePinCount + 1 + i);
             }
         }
+    }
+
+    public void Init()
+    {
+        OnClearEvent -= ClearGame;
+        OnClearEvent += ClearGame;
+
+        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public void SetSpawnThrowAblePin(int pinCount)

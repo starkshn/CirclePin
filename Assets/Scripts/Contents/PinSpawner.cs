@@ -16,28 +16,20 @@ public class PinSpawner : MonoBehaviour
     private float       _bottomAngle = 270.0f;              // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
 
     private List<PinController> _throwAblePins;             // 하단에 생성되는 던져야할 오브젝트 리스트
-    private StageManager        _stageController;
     private UI_TargetText       _targetTextUI;
 
-    private StageManager _stage;
-
-    private void Start()
-    { 
-        _targetObject = GameObject.FindGameObjectWithTag("Target");
-
+    public void SetUp(GameObject target, GameObject targetTextUI)
+    {
+        _targetObject = target;
         _targetTransfrom = _targetObject.transform;
+        _targetTextUI = targetTextUI.GetComponent<UI_TargetText>();
 
-        _targetTextUI = GameObject.FindGameObjectWithTag("TargetTextUI").GetComponent<UI_TargetText>();
-
-        _stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<StageManager>();
-        if (_stageController == null)
-            Debug.Log("Nulkl");
-            
+        _throwAblePins = new List<PinController>();
     }
 
     private void Update()
     {
-        if (_stage.IsGameOver) return;
+        if (Managers.Stage.IsGameOver) return;
 
         if (Input.GetMouseButtonDown(0) && _throwAblePins.Count > 0)
         {
@@ -49,20 +41,16 @@ public class PinSpawner : MonoBehaviour
 
             for (int i = 0; i < _throwAblePins.Count; ++i)
             {
-                _throwAblePins[i].MoveOneStep(_stageController._pinDistance);
+                _throwAblePins[i].MoveOneStep(Managers.Stage._pinDistance);
             }
         }
 
         if (_throwAblePins.Count == 0)
         {
-            _stageController.OnClearEvent.Invoke(true);
+            Managers.Stage.OnClearEvent.Invoke(true);
         }
     }
 
-    public void SetUp()
-    {
-        _throwAblePins = new List<PinController>();
-    }
 
     private void SetInPinStuckToTarget(GameObject pin, float angle)
     {
@@ -88,7 +76,7 @@ public class PinSpawner : MonoBehaviour
 
         SetInPinStuckToTarget(pinObject, angle);
 
-        _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pinObject.transform);
+        _targetTextUI.SpawnTextIndexUI(true, index, pinObject.transform);
     }
 
     public void SpawnThrowAlbePin(Vector3 pos, int index)
@@ -100,6 +88,6 @@ public class PinSpawner : MonoBehaviour
         PinController pin = pinObject.GetComponent<PinController>();
         _throwAblePins.Add(pin);
 
-        _targetTextUI.OnSpawnTextIndexUI.Invoke(true, index, pinObject.transform);
+        _targetTextUI.SpawnTextIndexUI(true, index, pinObject.transform);
     }
 }

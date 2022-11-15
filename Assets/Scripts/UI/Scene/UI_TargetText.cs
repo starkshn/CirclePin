@@ -29,32 +29,12 @@ public class UI_TargetText : UI_Scene
     private GameObject      _textPinIndexPrefab;    // 핀에 숫자를 표시하는 Text UI
     private Transform       _textParent;            // 핀 Text가 배치되는 Panel Transform
 
-    private Vector3         _screenPosition;
-
-    public Action<bool, int, Transform> OnSpawnTextIndexUI;
-
     public override void Init()
     {
         base.Init();
 
-        // SpawnTextUI Action묶는 부분
-
         _gameSceneCanvas = GetComponent<Canvas>();
         _gameSceneCanvasRect = _gameSceneCanvas.GetComponent<RectTransform>();
-
-        _targetTransform = GameObject.FindGameObjectWithTag("Target").transform;
-        _textParent = _targetTransform;
-
-        if (_targetTransform != null)
-        {
-            _rectTransform = Util.FindChild(gameObject, "TargetUIPos").GetComponent<RectTransform>();
-
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(_targetTransform.position);
-            _rectTransform.position = screenPos;
-        }
-
-        OnSpawnTextIndexUI -= SpawnTextIndexUI;
-        OnSpawnTextIndexUI += SpawnTextIndexUI;
 
         // 광고 다는 부분
         // _ad = new GoogleMobileAdsDemoScript();
@@ -64,18 +44,29 @@ public class UI_TargetText : UI_Scene
         // GetButton((int)Define.GameScene_UI_Buttons.ReStartButton).gameObject.BindEvent(OnClickedReStartButton, Define.UIEvent.Click);
         // ====================================================
     }
-    // ===================================================================================================
+
+
+    // ======================================================
     // Action받는 함수 예시
     //private void OnClickedStartButton(PointerEventData data)
     //{
     //    Managers.Sound.Play("UI/Pop_3");
     //}
-    // ===================================================================================================
+    // ======================================================
 
-    public void SetUp(Transform target)
+    public void SetUp(GameObject target)
     {
         // UI가 쫒아 다닐 대상 설정
-        _targetTransform = target;
+        _targetTransform = target.GetComponent<Transform>();
+        _textParent = _targetTransform;
+
+        if (_targetTransform != null)
+        {
+            _rectTransform = Util.FindChild(gameObject, "TargetUIPos").GetComponent<RectTransform>();
+
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(_targetTransform.position);
+            _rectTransform.position = screenPos;
+        }
 
         // RectTransform 컴포넌트 정보 얻어오기
         _rectTransform = target.GetComponent<RectTransform>();
