@@ -49,13 +49,15 @@ public class Managers : MonoBehaviour
                 go = new GameObject { name = "@Managers" };
                 go.AddComponent<Managers>();
 
-                GameObject s = GameObject.Find("@StageManager");
-                if (s == null)
-                {
-                    s = new GameObject { name = "@StageManager" };
-                    s.GetOrAddComponent<StageManager>();
-                    s.transform.SetParent(go.transform);
-                }
+            }
+
+            GameObject s = GameObject.Find("@StageManager");
+            if (s == null)
+            {
+                s = new GameObject { name = "@StageManager" };
+                s.GetOrAddComponent<StageManager>();
+                s.transform.SetParent(go.transform);
+                s.AddComponent<Coru>();
             }
 
             DontDestroyOnLoad(go);
@@ -66,7 +68,7 @@ public class Managers : MonoBehaviour
             s_instance._sound.Init();
             s_instance._stage.Init();
 
-            GameObject ad = GameObject.Find("@BaanerAd");
+            // GameObject ad = GameObject.Find("@BaanerAd");
 
             //if (ad == null)
             //{

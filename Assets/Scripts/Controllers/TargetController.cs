@@ -23,7 +23,8 @@ public class TargetController : CreatureController
     protected override void UpdateRotate()
     {
         // 방향 * 속도 * Time.deltaTime으로 오브젝트 회전
-        transform.Rotate(_rotateSpeed * _rotateAngle * Time.deltaTime);
+        if (_rotateSpeed > 0)
+            transform.Rotate(_rotateSpeed * _rotateAngle * Time.deltaTime);
     }
 
     // Game Over 일 경우
@@ -35,6 +36,8 @@ public class TargetController : CreatureController
     {
         _rotateSpeed = 0;
     }
-
-
+    public void RotateFast()
+    {
+        _rotateSpeed = 500;
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PinController : CreatureController
 {
+    [SerializeField]
     private GameObject  _square;            // 핀의 막대 부분.
     private float       _moveTime = 0.2f;
 

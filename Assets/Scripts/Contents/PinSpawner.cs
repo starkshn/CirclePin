@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ public class PinSpawner : MonoBehaviour
 {
     private GameObject  _pin;                               // pin Object
     private GameObject  _targetObject;                      // target Object
-                                                            
+    private GameObject  _pins;
+
     private Transform   _targetTransfrom;                   // 과녁 오브젝트의 Transform
     private Vector3     _targetPosition = Vector3.up * 2;   // 과녁의 위치
 
@@ -16,10 +18,17 @@ public class PinSpawner : MonoBehaviour
     private float       _bottomAngle = 270.0f;              // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
 
     private List<PinController> _throwAblePins;             // 하단에 생성되는 던져야할 오브젝트 리스트
+    public  int                 _thowAblePinCount;
     private UI_TargetText       _targetTextUI;
 
     public void SetUp(GameObject target, GameObject targetTextUI)
     {
+        _pins = GameObject.Find("Pins");
+        if (_pins == null)
+        {
+            _pins = new GameObject { name = "Pins" };
+        }
+
         _targetObject = target;
         _targetTransfrom = _targetObject.transform;
         _targetTextUI = targetTextUI.GetComponent<UI_TargetText>();
@@ -43,11 +52,18 @@ public class PinSpawner : MonoBehaviour
             {
                 _throwAblePins[i].MoveOneStep(Managers.Stage._pinDistance);
             }
-        }
 
-        if (_throwAblePins.Count == 0)
+            DecreaseThrowableCount();
+        }
+    }
+
+    public void DecreaseThrowableCount()
+    {
+        --_thowAblePinCount;
+
+        if (_thowAblePinCount == 0)
         {
-            Managers.Stage.OnClearEvent.Invoke(true);
+            Managers.Stage.GameClear();
         }
     }
 
@@ -81,13 +97,18 @@ public class PinSpawner : MonoBehaviour
 
     public void SpawnThrowAlbePin(Vector3 pos, int index)
     {
-        GameObject pinObject = Managers.Game.Spawn(Define.WorldObject.Pin, "Pin/Pin");
-        pinObject.transform.position = pos;
-        
-        // Pin 컴포넌트 정보를 얻어와 SetUp() 메소드 호출
-        PinController pin = pinObject.GetComponent<PinController>();
-        _throwAblePins.Add(pin);
+        if (_pins != null)
+        {
+            GameObject pinObject = Managers.Game.Spawn(Define.WorldObject.Pin, "Pin/Pin");
+            pinObject.transform.position = pos;
+            pinObject.transform.SetParent(_pins.transform);
 
-        _targetTextUI.SpawnTextIndexUI(true, index, pinObject.transform);
+            // Pin 컴포넌트 정보를 얻어와 SetUp() 메소드 호출
+            PinController pin = pinObject.GetComponent<PinController>();
+            _throwAblePins.Add(pin);
+            ++_thowAblePinCount;
+
+            _targetTextUI.SpawnTextIndexUI(true, index, pinObject.transform);
+        }
     }
 }

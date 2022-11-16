@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8751215332044584938}
   m_Layer: 0
   m_Name: PinSpawner
-  m_TagString: Untagged
+  m_TagString: PinSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

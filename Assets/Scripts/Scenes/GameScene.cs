@@ -28,6 +28,7 @@ public class GameScene : BaseScene
         // Call SetUp
         p_pinSpawner.GetComponent<PinSpawner>().SetUp(_target, _targetTextUI);
         _targetTextUI.GetComponent<UI_TargetText>().SetUp(_target);
+        
         // ===========================================
 
         // Banner
