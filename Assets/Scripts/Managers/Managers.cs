@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Managers : MonoBehaviour
 {
@@ -52,12 +53,12 @@ public class Managers : MonoBehaviour
             }
 
             GameObject s = GameObject.Find("@StageManager");
+
             if (s == null)
             {
                 s = new GameObject { name = "@StageManager" };
                 s.GetOrAddComponent<StageManager>();
                 s.transform.SetParent(go.transform);
-                s.AddComponent<Coru>();
             }
 
             DontDestroyOnLoad(go);
