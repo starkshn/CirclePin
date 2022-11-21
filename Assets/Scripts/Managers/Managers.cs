@@ -15,8 +15,7 @@ public class Managers : MonoBehaviour
     SceneManagerEx  _scene = new SceneManagerEx();
     SoundManager    _sound = new SoundManager();
     UIManager       _ui = new UIManager();
-    GameManagerEx   _game = new GameManagerEx();
-    StageManager    _stage = new StageManager();   
+    GameManagerEx   _game = new GameManagerEx();  
 
     // AdManager _ad = new AdManager();
 
@@ -27,7 +26,6 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static UIManager UI { get { return Instance._ui; } }
-    public static StageManager Stage { get { return Instance._stage; } }
     // public static AdManager Ad { get { return Instance._ad; } }
 
     void Start()
@@ -52,22 +50,12 @@ public class Managers : MonoBehaviour
 
             }
 
-            GameObject s = GameObject.Find("@StageManager");
-
-            if (s == null)
-            {
-                s = new GameObject { name = "@StageManager" };
-                s.GetOrAddComponent<StageManager>();
-                s.transform.SetParent(go.transform);
-            }
-
             DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Managers>();
 
             s_instance._data.Init();
             s_instance._pool.Init();
             s_instance._sound.Init();
-            s_instance._stage.Init();
 
             // GameObject ad = GameObject.Find("@BaanerAd");
 
@@ -87,6 +75,5 @@ public class Managers : MonoBehaviour
         UI.Clear();
         Pool.Clear();
         Game.Clear();
-        Stage.Clear();
     }
 }

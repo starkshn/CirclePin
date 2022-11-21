@@ -38,12 +38,8 @@ public class GameManagerEx
         switch (type)
         {
             case Define.WorldObject.Player:
-                {  
-                    _player = go;
-                    GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-                    _cameraController = Util.GetOrAddComponent<CameraController>(camera);
-
-                    _cameraController.SetPlayer(_player);
+                { 
+                    
                 }
                 break;
             case Define.WorldObject.Pin:

@@ -15,7 +15,8 @@ public static class Extension
 	{
 		UI_Base.BindEvent(go, action, type);
 	}
-	public static void BindEventInt(this GameObject go, Action<int> action)
+
+    public static void BindEventInt(this GameObject go, Action<int> action)
 	{
 		UI_Base.BindEvent(go, action);
 	}

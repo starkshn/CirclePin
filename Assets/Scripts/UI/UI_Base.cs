@@ -47,10 +47,10 @@ public abstract class UI_Base : MonoBehaviour
 		return objects[idx] as T;
 	}
 
-	protected GameObject GetObject(int idx) { return Get<GameObject>(idx); }
-	protected Text GetText(int idx) { return Get<Text>(idx); }
-	protected Button GetButton(int idx) { return Get<Button>(idx); }
-	protected Image GetImage(int idx) { return Get<Image>(idx); }
+	protected GameObject	GetObject(int idx) { return Get<GameObject>(idx); }
+	protected Text			GetText(int idx) { return Get<Text>(idx); }
+	protected Button		GetButton(int idx) { return Get<Button>(idx); }
+	protected Image			GetImage(int idx) { return Get<Image>(idx); }
 
     public static void BindEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
 	{
@@ -70,11 +70,19 @@ public abstract class UI_Base : MonoBehaviour
                 evt.OnDragHandler -= action;
                 evt.OnDragHandler += action;
                 break;
+            case Define.UIEvent.PointerEnter:
+                evt.OnPointerEnterHandler -= action;
+                evt.OnPointerEnterHandler += action;
+                break;
+            case Define.UIEvent.PointerExit:
+                evt.OnPointerExitHandler -= action;
+                evt.OnPointerExitHandler += action;
+                break;
         }
 	}
 
-	// overLoading 클릭같은 이벤트 말고 다른 이벤트들
-	public static void BindEvent(GameObject go, Action<int> action)
+    // overLoading 클릭같은 이벤트 말고 다른 이벤트들
+    public static void BindEvent(GameObject go, Action<int> action)
 	{
 
 	}

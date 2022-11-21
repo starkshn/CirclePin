@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class PinSpawner : MonoBehaviour
 {
-    private GameObject  _pin;                               // pin Object
-    private GameObject  _targetObject;                      // target Object
-    private GameObject  _pins;
+    private GameObject          _pin;                               // pin Object
+    private GameObject          _targetObject;                      // target Object
+    private GameObject          _pins;
+    private GameObject          _sg;
+    private StageController     _sgc;                               // StageController
 
-    private Transform   _targetTransfrom;                   // 과녁 오브젝트의 Transform
-    private Vector3     _targetPosition = Vector3.up * 2;   // 과녁의 위치
+    private Transform           _targetTransfrom;                   // 과녁 오브젝트의 Transform
+    private Vector3             _targetPosition = Vector3.up * 2;   // 과녁의 위치
 
-    private float       _targetRadius = 0.8f;               // 과녁의 반지름
-    private float       _pinLength = 1.5f;                  // 핀 막대 길이
-    private float       _bottomAngle = 270.0f;              // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
+    private float               _targetRadius = 0.8f;               // 과녁의 반지름
+    private float               _pinLength = 1.5f;                  // 핀 막대 길이
+    private float               _bottomAngle = 270.0f;              // 게임 도중 마우스 클릭으로 배치되는 핀의 각도
 
-    private List<PinController> _throwAblePins;             // 하단에 생성되는 던져야할 오브젝트 리스트
+    private List<PinController> _throwAblePins;                     // 하단에 생성되는 던져야할 오브젝트 리스트
     public  int                 _thowAblePinCount;
     private UI_TargetText       _targetTextUI;
 
-    public void SetUp(GameObject target, GameObject targetTextUI)
+    public void SetUp(GameObject target, GameObject targetTextUI, GameObject SG)
     {
+        _sg = SG;
+        _sgc = _sg.GetComponent<StageController>();
+
         _pins = GameObject.Find("Pins");
         if (_pins == null)
         {
@@ -38,7 +43,7 @@ public class PinSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Managers.Stage.IsGameOver) return;
+        // if (Managers.Stage.IsGameOver) return;
 
         if (Input.GetMouseButtonDown(0) && _throwAblePins.Count > 0)
         {
@@ -50,7 +55,7 @@ public class PinSpawner : MonoBehaviour
 
             for (int i = 0; i < _throwAblePins.Count; ++i)
             {
-                _throwAblePins[i].MoveOneStep(Managers.Stage._pinDistance);
+                _throwAblePins[i].MoveOneStep(_sgc._pinDistance);
             }
 
             DecreaseThrowableCount();
@@ -63,10 +68,9 @@ public class PinSpawner : MonoBehaviour
 
         if (_thowAblePinCount == 0)
         {
-            Managers.Stage.GameClear();
+            _sgc.GameClear();
         }
     }
-
 
     private void SetInPinStuckToTarget(GameObject pin, float angle)
     {

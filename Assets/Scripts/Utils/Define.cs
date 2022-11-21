@@ -17,6 +17,9 @@ public class Define
         UI_None,
         UI_LoginScene,
         UI_GameScene,
+        UI_MainMenu,
+        UI_TargetTextUI,
+
     }
 
     public enum CreatureState
@@ -53,6 +56,8 @@ public class Define
         Click,
         Drag,
         Touch,
+        PointerEnter,
+        PointerExit,
     }
     public enum CameraMode
     {
@@ -65,38 +70,27 @@ public class Define
         TARGET_INDEX_UI_TEXT,
     }
 
+    // =============================
+    // UI_MainMenu
+    public enum UI_MainMenuText
+    {
+        Title,
+    }
+    public enum UI_MainMenuButton
+    {
+        PlayButton,
+        RestartButton,
+        ExitButton,
 
- 
-    //public enum GameScene_UI_Buttons
-    //{
-    //    StartButton,
-    //    ReStartButton,
-    //    GameOverButton, // 텍스트 처럼 활용
-    //    ScoreButton,    // 텍스트 처럼 활용
-    //    AdButton,       // 보상형 광고 버튼
+        Count,
+    }
+    public enum UI_MainMenuImage
+    {
+        Background,
+    }
+    // =============================
 
-    //    END
-    //}
-    //public enum GameScene_UI_Texts
-    //{
-    //    ScoreText,
-    //    CurrentScoreText,
-    //    BestScoreText,
 
-    //    END
-    //}
-    //public enum GameScene_UI_Images
-    //{
-       
-    //}
-    //public enum GameScene_UI_GameObjects
-    //{
 
-    //}
 
-    //public enum GameScene_UI_Panel
-    //{
-
-    //}
-   
 }

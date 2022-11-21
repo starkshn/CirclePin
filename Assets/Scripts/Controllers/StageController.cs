@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class StageManager : MonoBehaviour
+public class StageController : MonoBehaviour
 {
     private GameObject          p_pinSpawner;       // pinSpawner
     private GameObject          _target;            // target Object
@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
 
     private PinSpawner          _pinSpawner;        // pinSpawner
     private TargetController    _targetController;
-    private Camera              _camera;            // MainCamera
+    private CameraController    _camera;            // MainCamera
 
     private Rotator             _targetRotator;     // target Object Rotator
     private Rotator             _panelRotator;      // panel Object Rotator
@@ -22,12 +22,12 @@ public class StageManager : MonoBehaviour
     private int                 _stuckPinCount = 5;         // 과녁의 pin count
     private int                 _throwablePinCount = 10;    // 현재 스테이지를 클리어하기 위해 던져야 하는 pin count
 
-    private Vector3     _firstPinPosition = Vector3.down * 2;       // 게임화면 하단에 배치되는 던져야 하는 핀들의 첫번째 핀 위치
-    public float        _pinDistance { private set; get; } = 1;
+    private Vector3             _firstPinPosition = Vector3.down * 2;       // 게임화면 하단에 배치되는 던져야 하는 핀들의 첫번째 핀 위치
+    public float                _pinDistance { private set; get; } = 1;
 
     // Game Over/Clear관련
-    private Color _failBackGroundColor = new Color(0.4f, 0.1f, 0.1f);
-    private Color _clearBackGroundColor = new Color(0.0f, 0.5f, 0.25f);
+    private Color               _failBackGroundColor = new Color(0.4f, 0.1f, 0.1f);
+    private Color               _clearBackGroundColor = new Color(0.0f, 0.5f, 0.25f);
 
     public bool IsGameOver { set; get; } = false;
 
@@ -63,10 +63,13 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public void Init()
+    private void Start()
     {
-        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        
+        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        if (_camera)
+            Debug.Log(1111);
+        else
+            Debug.Log(2222);
     }
 
     public void SetSpawnThrowAblePin(int pinCount)
@@ -83,14 +86,18 @@ public class StageManager : MonoBehaviour
     {
         IsGameOver = true;
 
-        _camera.backgroundColor = _failBackGroundColor;
+        _camera.GameOver();
 
         _targetController.Stop();
     }
 
     public void GameClear()
     {
-        StartCoroutine(GameClearCo());
+        //Debug.Log(gameObject.name);
+        //StartCoroutine(Managers.Stage.GameClearCo());
+        //routine r = this.gameObject.GetComponent<routine>();
+        //r.GameClear();
+        StartCoroutine("GameClearCo");
     }
 
     public IEnumerator GameClearCo()
@@ -106,8 +113,8 @@ public class StageManager : MonoBehaviour
         // Get Component
         _targetRotator.RotateFast();
         _targetController.RotateFast();
-
-        _camera.backgroundColor = _clearBackGroundColor;
+        
+        _camera.GameClear();
     }
 
     public void Clear()

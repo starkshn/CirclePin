@@ -7,10 +7,16 @@ public class PinController : CreatureController
     [SerializeField]
     private GameObject  _square;            // 핀의 막대 부분.
     private float       _moveTime = 0.2f;
+    private GameObject  _sg;
+
+    StageController     _sgc;
 
     protected override void Init()
     {
         _objectType = Define.WorldObject.Pin;
+
+        _sg = GameObject.FindGameObjectWithTag("StageController");
+        _sgc = _sg.GetComponent<StageController>();
     }
 
     public void SetInPinStuckToTarget()
@@ -50,7 +56,7 @@ public class PinController : CreatureController
         if (collision.tag.Equals("Pin"))
         {
             Debug.Log("OnTriggerEnter2D Pin");
-            Managers.Stage.GameOver();
+            _sg.GetComponent<StageController>().GameOver();
         }
     }
 }
