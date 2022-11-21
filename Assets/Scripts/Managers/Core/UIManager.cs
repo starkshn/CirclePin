@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Platinio;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +8,9 @@ public class UIManager
 {
     int _order = 10;
 
-    Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
+    Stack<UI_Popup>     _popupStack   = new Stack<UI_Popup>();
+    Queue<UI_Scene>     _sceneList    = new Queue<UI_Scene>();
+
     UI_Scene _sceneUI = null;
 
     public GameObject Root
@@ -60,7 +64,9 @@ public class UIManager
 
 		go.transform.SetParent(Root.transform);
 
-		return sceneUI;
+        _sceneList.Enqueue(sceneUI);
+
+        return sceneUI;
 	}
 
 	public T ShowPopupUI<T>(string name = null) where T : UI_Popup
@@ -75,6 +81,19 @@ public class UIManager
         go.transform.SetParent(Root.transform);
 
 		return popup;
+    }
+
+    // for scene Change
+    public void CloseAllSceneUI()
+    {
+        if (_sceneList.Count == 0)
+            return;
+
+        while (_sceneList.Count == 0)
+        {
+            GameObject ui = _sceneList.Dequeue().gameObject;
+            Managers.Resource.Destroy(ui);   
+        }
     }
 
     public void ClosePopupUI(UI_Popup popup)

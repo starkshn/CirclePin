@@ -78,8 +78,8 @@ public class Define
     }
     public enum UI_MainMenuButton
     {
-        PlayButton,
-        RestartButton,
+        StartButton,
+        LeaderBoardButton,
         ExitButton,
 
         Count,
@@ -91,6 +91,28 @@ public class Define
     // =============================
 
 
+    // =============================
+    // UI_PauseButton
+    public enum UI_PauseButton_Button
+    {
+        PauseButton,
+
+        Count,
+    }
+
+    // =============================
 
 
+    // =============================
+    // UI_Pause (Popup)
+    public enum UI_PausePopup_Button
+    {
+        ResumeButton,
+        RestartButton,
+        ExitButton,
+
+        Count,
+    }
+
+    // =============================
 }

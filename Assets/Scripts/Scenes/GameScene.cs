@@ -17,6 +17,8 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.GameScene;
 
+        Managers.UI.ShowSceneUI<UI_PauseButton>("UI_PauseButton");
+
         // ===========================================
         // SPAWN
         // Target, PinSpawner, TargetTextUI

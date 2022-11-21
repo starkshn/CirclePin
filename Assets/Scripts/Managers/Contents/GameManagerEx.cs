@@ -12,13 +12,8 @@ public class GameManagerEx
 
     CameraController _cameraController;
 
+
     public GameObject GetPlayer() { return _player; }
-
-    public void Clear()
-    {
-
-    }
-
     public Define.WorldObject GetWorldObjectType(GameObject go)
     {
         CreatureController cc = go.GetComponent<CreatureController>();
@@ -74,6 +69,11 @@ public class GameManagerEx
         }
 
         Managers.Resource.Destroy(go);
+    }
+    
+    public void Clear()
+    {
+
     }
 }
 

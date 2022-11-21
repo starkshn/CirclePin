@@ -8,6 +8,12 @@ using UnityEngine.UI;
 
 public abstract class UI_Base : MonoBehaviour
 {
+    // ============================================
+    // For MoveUI Canvas
+    protected Canvas			_gameSceneCanvas;
+    protected RectTransform		_gameSceneCanvasRect;
+    // ============================================
+
     protected Dictionary<Type, UnityEngine.Object[]> _objects;
 
 	public abstract void Init();

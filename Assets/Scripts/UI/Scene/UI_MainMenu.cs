@@ -8,12 +8,6 @@ using UnityEngine.UI;
 
 public class UI_MainMenu : UI_Scene
 {
-    // ============================================
-    // For MoveUI Canvas
-    // ============================================
-    private Canvas          _gameSceneCanvas;
-    private RectTransform   _gameSceneCanvasRect;
-
     public override void Init()
     {
         base.Init();
@@ -47,28 +41,35 @@ public class UI_MainMenu : UI_Scene
                 Define.UIEvent.PointerExit
             );
         }
-
         #endregion
 
+        BindEvent( GetButton((int)Define.UI_MainMenuButton.StartButton).gameObject, OnClickedStartButton, Define.UIEvent.Click);
+        BindEvent ( GetButton((int)Define.UI_MainMenuButton.LeaderBoardButton).gameObject, OnClickedLeaderBoardButton, Define.UIEvent.Click);
+        BindEvent ( GetButton((int)Define.UI_MainMenuButton.ExitButton).gameObject, OnClickedExitButton, Define.UIEvent.Click);
+
     }
 
-    private void OnPointerEnterButton(PointerEventData data)
+    private void OnClickedStartButton(PointerEventData data)
     {
-        Debug.Log(data);
-        Debug.Log(this.gameObject.name);
-        //GetButton((int)Define.UI_MainMenuButton.RestartButton).gameObject.GetComponent<RectTransform>().ScaleTween(new Vector3(1.2f, 1.2f, 1.2f), 0.3f);
+        Debug.Log("OnClickedStartButton");
+
+        Managers.Scene.LoadScene(Define.Scene.GameScene);
     }
 
-    private void OnPointerExitButton(PointerEventData data)
+    private void OnClickedLeaderBoardButton(PointerEventData data)
     {
-        // GetButton((int)Define.UI_MainMenuButton.RestartButton).gameObject.GetComponent<RectTransform>().ScaleTween(new Vector3(1.0f, 1.0f, 1.0f), 0.3f);
+        Debug.Log("OnClickedLeaderBoardButton");
+
     }
 
-    private void OnClickedRestartButton(PointerEventData data)
+    private void OnClickedExitButton(PointerEventData data)
     {
-        Debug.Log("OnClickedRestartButton On RestartBTN");
+        // 현재 실행 환경이 에디터 이면 에디터 플레이모드 종료
+        #if UINTY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // or UnityEditor.EditorApplication.ExitPlaymode();
+        #else
+        Application.Quit();
+        #endif
     }
-
-
 
 }

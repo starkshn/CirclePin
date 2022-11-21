@@ -11,7 +11,7 @@ public class LoginScene : BaseScene
 
         SceneType = Define.Scene.LoginScene;
 
-        // Managers.UI.ShowSceneUI<UI_LoginScene>("UI_LoginScene");
+        Managers.UI.ShowSceneUI<UI_MainMenu>("UI_MainMenu");
 
         // Banner
         //GameObject go = GameObject.Find("@BannerAd");
@@ -19,17 +19,10 @@ public class LoginScene : BaseScene
         //ad.ExitAd();
     }
 
-    private void Update()
-    { 
-        if (Input.touchCount > 0 || Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log("Click 'Q' -> Go To GameScene!");
-            Managers.Scene.LoadScene(Define.Scene.GameScene);
-        }
-    }
-
     public override void Clear()
     {
         // Managers.Sound.StopBgm("Bgm/GhostChaser");
+        Debug.Log("LoginScene Clear");
+        Managers.UI.CloseAllSceneUI();        
     }
 }
