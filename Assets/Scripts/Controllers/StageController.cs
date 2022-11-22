@@ -66,10 +66,6 @@ public class StageController : MonoBehaviour
     private void Start()
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
-        if (_camera)
-            Debug.Log(1111);
-        else
-            Debug.Log(2222);
     }
 
     public void SetSpawnThrowAblePin(int pinCount)
@@ -93,11 +89,10 @@ public class StageController : MonoBehaviour
 
     public void GameClear()
     {
-        //Debug.Log(gameObject.name);
-        //StartCoroutine(Managers.Stage.GameClearCo());
-        //routine r = this.gameObject.GetComponent<routine>();
-        //r.GameClear();
+        Managers.UI.ShowPopupUI<UI_Popup>("UI_ClearPopup");
+
         StartCoroutine("GameClearCo");
+
     }
 
     public IEnumerator GameClearCo()

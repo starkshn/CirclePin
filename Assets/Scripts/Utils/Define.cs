@@ -92,27 +92,27 @@ public class Define
 
 
     // =============================
-    // UI_PauseButton
-    public enum UI_PauseButton_Button
+    // UI_GearMenuButton
+    public enum UI_GearMenuButton_Button
     {
-        PauseButton,
+        GearButton,
 
         Count,
     }
 
     // =============================
 
-
     // =============================
-    // UI_Pause (Popup)
-    public enum UI_PausePopup_Button
+    // UI_GearPopup
+    public enum UI_GearPopup_Button
     {
         ResumeButton,
         RestartButton,
         ExitButton,
-
+        
         Count,
     }
 
     // =============================
+
 }

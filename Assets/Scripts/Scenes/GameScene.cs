@@ -17,7 +17,7 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.GameScene;
 
-        Managers.UI.ShowSceneUI<UI_PauseButton>("UI_PauseButton");
+        Managers.UI.ShowSceneUI<UI_GearMenuButton>("UI_PauseButton");
 
         // ===========================================
         // SPAWN
