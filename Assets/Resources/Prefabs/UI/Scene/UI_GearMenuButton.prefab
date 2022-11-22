@@ -141,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.754717
       objectReference: {fileID: 0}
+    - target: {fileID: 3636024804699006524, guid: 47a7d99d823864bbd90ebe911d1dd081, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3636024804699006525, guid: 47a7d99d823864bbd90ebe911d1dd081, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -231,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3636024804699006527, guid: 47a7d99d823864bbd90ebe911d1dd081, type: 3}
       propertyPath: m_Name
-      value: PauseButton
+      value: GearButton
       objectReference: {fileID: 0}
     - target: {fileID: 3636024805679103838, guid: 47a7d99d823864bbd90ebe911d1dd081, type: 3}
       propertyPath: m_Type

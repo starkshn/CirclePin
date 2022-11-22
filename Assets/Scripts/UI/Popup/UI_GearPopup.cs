@@ -11,16 +11,16 @@ public class UI_GearPopup : UI_Popup
     {
         base.Init();
 
-        Bind<Button>(typeof(Define.UI_GearMenuButton_Button));
+        Bind<Button>(typeof(Define.UI_GearPopup_Button));
 
-        string[] btns = Enum.GetNames((typeof(Define.UI_GearMenuButton_Button)));
+        string[] btns = Enum.GetNames((typeof(Define.UI_GearPopup_Button)));
 
         #region "Bind Button Event"
 
 
         for (int i = 0; i < btns.Length - 1; ++i)
         {
-            int btnIdex = (int)Enum.Parse(typeof(Define.UI_GearMenuButton_Button), btns[i]);
+            int btnIdex = (int)Enum.Parse(typeof(Define.UI_GearPopup_Button), btns[i]);
 
             BindEvent
             (
@@ -49,9 +49,11 @@ public class UI_GearPopup : UI_Popup
 
     private void OnClickedResumeButton(PointerEventData data)
     {
-        Debug.Log("OnClickedPauseButton");
+        Debug.Log("OnClickedResumeButton");
 
-       
+        Managers.UI.OnClickedGearMenuButton.Invoke(false);
+        Managers.UI.ClosePopupUI(this);
+        
     }
 
     private void OnClickedRestartButton(PointerEventData data)

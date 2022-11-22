@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class UIManager
 {
+    public Action<bool> OnClickedGearMenuButton;
+
     int _order = 10;
 
     Stack<UI_Popup>     _popupStack   = new Stack<UI_Popup>();

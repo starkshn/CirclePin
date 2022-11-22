@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PinSpawner : MonoBehaviour
 {
@@ -22,6 +23,15 @@ public class PinSpawner : MonoBehaviour
     private List<PinController> _throwAblePins;                     // 하단에 생성되는 던져야할 오브젝트 리스트
     public  int                 _thowAblePinCount;
     private UI_TargetText       _targetTextUI;
+
+    // GearMenu Click
+    private bool                _clickedGearMenu = false;
+
+    private void Awake()
+    {
+        Managers.UI.OnClickedGearMenuButton -= OnClickedGearMenuButton;
+        Managers.UI.OnClickedGearMenuButton += OnClickedGearMenuButton;
+    }
 
     public void SetUp(GameObject target, GameObject targetTextUI, GameObject SG)
     {
@@ -45,22 +55,31 @@ public class PinSpawner : MonoBehaviour
     {
         // if (Managers.Stage.IsGameOver) return;
 
-        if (Input.GetMouseButtonDown(0) && _throwAblePins.Count > 0)
-        {
-            // thorwalbePins 리스트에 저장된 첫 번째 핀을 과녁에 배치
-            SetInPinStuckToTarget(_throwAblePins[0].gameObject, _bottomAngle);
-
-            // 과녁에 배치한 첫번째 핀 요소를 리스트에서 삭제
-            _throwAblePins.RemoveAt(0);
-
-            for (int i = 0; i < _throwAblePins.Count; ++i)
+        if (!_clickedGearMenu && Input.GetMouseButtonDown(0) && _throwAblePins.Count > 0)
+        { 
+            // UI클릭시 true, UI클릭이 아니면 false반환
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                _throwAblePins[i].MoveOneStep(_sgc._pinDistance);
-            }
+                // StartCoroutine("ThrowPin");
 
-            DecreaseThrowableCount();
+                // thorwalbePins 리스트에 저장된 첫 번째 핀을 과녁에 배치
+                SetInPinStuckToTarget(_throwAblePins[0].gameObject, _bottomAngle);
+
+                // 과녁에 배치한 첫번째 핀 요소를 리스트에서 삭제
+                _throwAblePins.RemoveAt(0);
+
+                for (int i = 0; i < _throwAblePins.Count; ++i)
+                {
+                    _throwAblePins[i].MoveOneStep(_sgc._pinDistance);
+                }
+
+                DecreaseThrowableCount();
+            }
+            
         }
+        
     }
+
 
     public void DecreaseThrowableCount()
     {
@@ -114,5 +133,13 @@ public class PinSpawner : MonoBehaviour
 
             _targetTextUI.SpawnTextIndexUI(true, index, pinObject.transform);
         }
+    }
+
+    private void OnClickedGearMenuButton(bool clicked)
+    {
+        if (clicked == true)
+            _clickedGearMenu = clicked;
+        else
+            _clickedGearMenu = clicked;
     }
 }

@@ -58,6 +58,8 @@ public class UI_GearMenuButton : UI_Scene
 
         UI_Popup popup = Managers.UI.ShowPopupUI<UI_Popup>("UI_GearPopup");
         // popup.gameObject.GetComponent<RectTransform>().ScaleTween(new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
+
+        Managers.UI.OnClickedGearMenuButton.Invoke(true);
     }
 
 }
