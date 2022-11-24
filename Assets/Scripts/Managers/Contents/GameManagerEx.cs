@@ -52,6 +52,14 @@ public class GameManagerEx
         }
         return go;
     }
+
+    public GameObject SpawnAnimalUI(Define.Animals type, string path, RectTransform rect = null)
+    {
+        GameObject go = Managers.Resource.Instantiate(path, rect);
+        return go;
+    }
+
+
     public void Despawn(GameObject go)
     {
         Define.WorldObject type = GetWorldObjectType(go);

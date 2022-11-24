@@ -70,6 +70,43 @@ public class Define
         TARGET_INDEX_UI_TEXT,
     }
 
+    public enum Animals
+    {
+        Bear,
+        Buffalo,
+        Chick,
+        Chicken,
+        Cow,
+        Crocodile,
+        Dog,
+        Duck,
+        Elephant,
+        Frog,
+        Giraffe,
+        Goat,
+        Gorilla,
+        Hipo,
+        Horse,
+        Monkey,
+        Moose,
+        Narwhal,
+        Owl,
+        Panda,
+        Parrot,
+        Penguin,
+        Pig,
+        Rabbit,
+        Rhino,
+        Sloth,
+        Snake,
+        Walrus,
+        Whale,
+        Zebra,
+
+        END
+    }
+
+
     // =============================
     // UI_MainMenu
     public enum UI_MainMenuText

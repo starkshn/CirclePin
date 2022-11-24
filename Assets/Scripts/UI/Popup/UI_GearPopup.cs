@@ -17,7 +17,6 @@ public class UI_GearPopup : UI_Popup
 
         #region "Bind Button Event"
 
-
         for (int i = 0; i < btns.Length - 1; ++i)
         {
             int btnIdex = (int)Enum.Parse(typeof(Define.UI_GearPopup_Button), btns[i]);
@@ -53,21 +52,29 @@ public class UI_GearPopup : UI_Popup
 
         Managers.UI.OnClickedGearMenuButton.Invoke(false);
         Managers.UI.ClosePopupUI(this);
+        Managers.UI._clickedGearButton = false;
         
     }
 
     private void OnClickedRestartButton(PointerEventData data)
     {
         Debug.Log("OnClickedPauseButton");
-
+        Managers.UI._clickedGearButton = false;
+        Managers.Scene.LoadScene(Define.Scene.GameScene);
 
     }
 
     private void OnClickedExitButton(PointerEventData data)
     {
         Debug.Log("OnClickedPauseButton");
+        Managers.UI._clickedGearButton = false;
 
-
+        // 현재 실행 환경이 에디터 이면 에디터 플레이모드 종료
+#if UINTY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // or      UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+        #endif
     }
 
 }

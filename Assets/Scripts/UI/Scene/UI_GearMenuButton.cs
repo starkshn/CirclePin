@@ -47,20 +47,19 @@ public class UI_GearMenuButton : UI_Scene
         #endregion
 
 
-        BindEvent(GetButton((int)Define.UI_GearMenuButton_Button.GearButton).gameObject, OnClickedPauseButton, Define.UIEvent.Click);
+        BindEvent(GetButton((int)Define.UI_GearMenuButton_Button.GearButton).gameObject, OnClickedGearButton, Define.UIEvent.Click);
     }
     
-    private void OnClickedPauseButton(PointerEventData data)
+    private void OnClickedGearButton(PointerEventData data)
     {
-        Debug.Log("OnClickedPauseButton");
-
         _gearIcon.RotateTween(Vector3.forward, _gearIcon.rotation.eulerAngles.z + _gearRotation, _time).SetEase(Ease.EaseInOutBack);
 
-        UI_Popup popup = Managers.UI.ShowPopupUI<UI_Popup>("UI_GearPopup");
-        // popup.gameObject.GetComponent<RectTransform>().ScaleTween(new Vector3(0.0f, 0.0f, 0.0f), 1.0f);
-
-        Managers.UI.OnClickedGearMenuButton.Invoke(true);
+        if (!Managers.UI._clickedGearButton)
+        {
+            UI_Popup popup = Managers.UI.ShowPopupUI<UI_Popup>("UI_GearPop");
+            Managers.UI.OnClickedGearMenuButton.Invoke(true);
+            Managers.UI._clickedGearButton = true;
+        }
     }
-
 }
 

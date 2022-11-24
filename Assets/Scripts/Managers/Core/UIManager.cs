@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager
 {
@@ -13,7 +14,10 @@ public class UIManager
     Stack<UI_Popup>     _popupStack   = new Stack<UI_Popup>();
     Queue<UI_Scene>     _sceneList    = new Queue<UI_Scene>();
 
-    UI_Scene _sceneUI = null;
+    UI_Scene            _sceneUI = null;
+
+    // Gear Button
+    public bool        _clickedGearButton = false;
 
     public GameObject Root
     {

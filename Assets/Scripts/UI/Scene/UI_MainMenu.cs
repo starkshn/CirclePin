@@ -46,7 +46,6 @@ public class UI_MainMenu : UI_Scene
         BindEvent( GetButton((int)Define.UI_MainMenuButton.StartButton).gameObject, OnClickedStartButton, Define.UIEvent.Click);
         BindEvent ( GetButton((int)Define.UI_MainMenuButton.LeaderBoardButton).gameObject, OnClickedLeaderBoardButton, Define.UIEvent.Click);
         BindEvent ( GetButton((int)Define.UI_MainMenuButton.ExitButton).gameObject, OnClickedExitButton, Define.UIEvent.Click);
-
     }
 
     private void OnClickedStartButton(PointerEventData data)
@@ -59,7 +58,6 @@ public class UI_MainMenu : UI_Scene
     private void OnClickedLeaderBoardButton(PointerEventData data)
     {
         Debug.Log("OnClickedLeaderBoardButton");
-
     }
 
     private void OnClickedExitButton(PointerEventData data)
@@ -71,5 +69,4 @@ public class UI_MainMenu : UI_Scene
         Application.Quit();
         #endif
     }
-
 }

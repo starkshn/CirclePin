@@ -11,6 +11,7 @@ public class LoginScene : BaseScene
 
         SceneType = Define.Scene.LoginScene;
 
+        //Managers.UI.ShowSceneUI<UI_LoginBackGround>("UI_LoginBackGround");
         Managers.UI.ShowSceneUI<UI_MainMenu>("UI_MainMenu");
 
         // Banner
