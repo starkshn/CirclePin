@@ -33,11 +33,6 @@ public class Managers : MonoBehaviour
         Init();
 	}
 
-    void Update()
-    {
-       
-    }
-
     static void Init()
     {
         if (s_instance == null)

@@ -19,6 +19,10 @@ public class UIManager
     // Gear Button
     public bool        _clickedGearButton = false;
 
+    // Animals
+    UI_Scene[] _animalsSpritesObj = new UI_Scene[(int)Define.Animals.END - 1];
+    
+
     public GameObject Root
     {
         get
@@ -47,19 +51,22 @@ public class UIManager
         }
     }
 
+
+    // for AnimalUI (수정함)
 	public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base
 	{
-		if (string.IsNullOrEmpty(name))
-			name = typeof(T).Name;
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
 
-		GameObject go = Managers.Resource.Instantiate($"UI/SubItem/{name}");
-		if (parent != null)
-			go.transform.SetParent(parent);
+        GameObject go = Managers.Resource.Instantiate($"UI/SubItem/{name}");
+        if (parent != null)
+            go.transform.SetParent(parent);
 
-		return Util.GetOrAddComponent<T>(go);
-	}
+        return Util.GetOrAddComponent<T>(go);
+    }
+    
 
-	public T ShowSceneUI<T>(string name = null) where T : UI_Scene
+    public T ShowSceneUI<T>(string name = null) where T : UI_Scene
 	{
 		if (string.IsNullOrEmpty(name))
 			name = typeof(T).Name;
@@ -88,6 +95,8 @@ public class UIManager
 
 		return popup;
     }
+
+  
 
     // for scene Change
     public void CloseAllSceneUI()
@@ -138,4 +147,19 @@ public class UIManager
         CloseAllPopupUI();
         _sceneUI = null;
     }
+
+    public void SetAnimalPopupUI(int idx, UI_Scene go)
+    {
+        _animalsSpritesObj[idx] = go;
+    }
+    public UI_Scene GetAnimalPopupUI(int idx)
+    {
+        if ((int)Define.Animals.END <= idx)
+        {
+            Debug.Log("Animal Index 초과!");
+            return null;
+        }
+        return _animalsSpritesObj[idx];
+    }
+
 }

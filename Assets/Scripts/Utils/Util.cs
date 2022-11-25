@@ -28,7 +28,7 @@ public class Util
 
         if (recursive == false)
         {
-            for (int i = 0; i < go.transform.childCount; i++)
+            for (int i = 0; i < go.transform.childCount; ++i)
             {
                 Transform transform = go.transform.GetChild(i);
                 if (string.IsNullOrEmpty(name) || transform.name == name)

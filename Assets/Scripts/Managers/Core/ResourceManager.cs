@@ -40,23 +40,23 @@ public class ResourceManager
     }
 
     // Animal UI전용
-    public GameObject Instantiate(string path, RectTransform parent = null, Canvas canvas = null)
-    {
-        GameObject original = Load<GameObject>($"Prefabs/{path}"); // 오리지날이고
+    //public GameObject Instantiate(string path, RectTransform parent = null, Canvas canvas = null)
+    //{
+    //    GameObject original = Load<GameObject>($"Prefabs/{path}"); // 오리지날이고
 
-        if (original == null)
-        {
-            Debug.Log($"Failed to load Animal Image UI prefab : {path}");
-            return null;
-        }
+    //    if (original == null)
+    //    {
+    //        Debug.Log($"Failed to load Animal Image UI prefab : {path}");
+    //        return null;
+    //    }
 
-        if (original.GetComponent<Poolable>() != null)
-            return Managers.Pool.Pop(original, parent).gameObject;
+    //    if (original.GetComponent<Poolable>() != null)
+    //        return Managers.Pool.Pop(original, parent).gameObject;
 
-        GameObject go = Object.Instantiate(original, parent);
-        go.name = original.name; // 카피한거임
-        return go;
-    }
+    //    GameObject go = Object.Instantiate(original, parent);
+    //    go.name = original.name; // 카피한거임
+    //    return go;
+    //}
 
     // =========================================================
     // Pin위치 설정을 위한 Instantiate 오버라이트 함수
