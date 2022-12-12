@@ -55,8 +55,12 @@ public class PinController : CreatureController
     {
         if (collision.tag.Equals("Pin"))
         {
+            transform.ScaleTween(new Vector2(1.2f, 1.2f), 0.3f);
             Debug.Log("OnTriggerEnter2D Pin");
-            _sg.GetComponent<StageController>().GameOver();
+            
+            Managers.Game.Spawn(Define.WorldObject.PinEffect, "Effect/PinEffect", transform);
+
+            _sgc.GameOver();
         }
     }
 }

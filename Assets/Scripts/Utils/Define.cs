@@ -39,7 +39,10 @@ public class Define
         Target,
         TextPinIndexCanvas,
         TextPinIndex,
+        DefaultKnife,
         Unknown,
+        PinEffect,
+        
     }
     
 
@@ -79,6 +82,7 @@ public class Define
         Cow,
         Crocodile,
         Dog,
+        Duck,
         Elephant,
         Frog,
         Giraffe,
@@ -120,10 +124,6 @@ public class Define
 
         Count,
     }
-    public enum UI_MainMenuImage
-    {
-        Background,
-    }
     // =============================
 
 
@@ -151,4 +151,9 @@ public class Define
 
     // =============================
 
+
+    public enum UI_ClearPopup
+    {
+        
+    }
 }

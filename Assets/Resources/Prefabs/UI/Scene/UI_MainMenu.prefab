@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
@@ -564,6 +564,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7319767617295772552, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_text
       value: "\uC2DC\uC791\uD558\uAE30"
@@ -579,7 +583,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 7aad15e6ac20071419f295d0a4ac59ac, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -599,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -4803041150432291842, guid: 7aad15e6ac20071419f295d0a4ac59ac, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
@@ -750,9 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_text
-      value: 'LEADER BOARD
-
-'
+      value: "\uC21C\uC704\uD45C"
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontSize
@@ -761,7 +763,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -777,7 +779,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901

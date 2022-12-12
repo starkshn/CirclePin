@@ -47,6 +47,7 @@ public class GameManagerEx
                     _textPinIndex.Add(go);
                 }
                 break;
+            
 
 
         }

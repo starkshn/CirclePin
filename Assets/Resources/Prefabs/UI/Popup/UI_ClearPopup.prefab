@@ -214,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_text
-      value: RESTART
+      value: "\uC7AC\uC2DC\uC791"
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontSize
@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
@@ -382,11 +382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8389762926998826479, guid: 16e628df1adfe430ebb078de05c75122, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 800
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 8389762926998826479, guid: 16e628df1adfe430ebb078de05c75122, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 800
+      value: 900
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8389762925534874637, guid: 16e628df1adfe430ebb078de05c75122, type: 3}
@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2814980710607695541, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2814980710607695541, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -495,23 +495,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_text
-      value: NEXT
+      value: "\uB2E4\uC74C\uC2A4\uD14C\uC774\uC9C0"
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontSize
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontSizeBase
-      value: 60
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_textAlignment
@@ -520,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
@@ -623,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2814980710607695541, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 2814980710607695541, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -639,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_text
-      value: EXIT
+      value: "\uC885\uB8CC\uD558\uAE30"
       objectReference: {fileID: 0}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontSize
@@ -648,7 +648,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -664,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -2626921693608917313, guid: 647162aad3d792c429840bd745f245f8, type: 2}
     - target: {fileID: 7319767617295772555, guid: 8de8f6c5f34274e569ac1bd4d57c3c70, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901

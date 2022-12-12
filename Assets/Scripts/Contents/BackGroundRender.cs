@@ -10,7 +10,7 @@ public class BackGroundRender : MonoBehaviour
 
     private void Start()
     {
-        _speed = 10.0f;
+        _speed = 0.5f;
         _render = GetComponent<MeshRenderer>();
     }
 

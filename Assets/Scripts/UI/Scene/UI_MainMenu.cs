@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class UI_MainMenu : UI_Scene
 {
-    GameObject _backGround;
-
     public override void Init()
     {
         base.Init();
@@ -19,7 +17,6 @@ public class UI_MainMenu : UI_Scene
 
         Bind<Button>(typeof(Define.UI_MainMenuButton));
         Bind<Text>(typeof(Define.UI_MainMenuText));
-        Bind<Image>(typeof(Define.UI_MainMenuImage));
 
         #region "Bind Button Event"
 
@@ -31,7 +28,7 @@ public class UI_MainMenu : UI_Scene
 
             BindEvent
             (
-                GetButton(btnIdex).gameObject, 
+                GetButton(btnIdex).gameObject,
                 (PointerEventData data) => { GetButton(btnIdex).gameObject.GetComponent<RectTransform>().ScaleTween(new Vector3(1.2f, 1.2f, 1.2f), 0.3f); },
                 Define.UIEvent.PointerEnter
             );
@@ -45,38 +42,10 @@ public class UI_MainMenu : UI_Scene
         }
         #endregion
 
-        BindEvent( GetButton((int)Define.UI_MainMenuButton.StartButton).gameObject, OnClickedStartButton, Define.UIEvent.Click);
-        BindEvent ( GetButton((int)Define.UI_MainMenuButton.LeaderBoardButton).gameObject, OnClickedLeaderBoardButton, Define.UIEvent.Click);
-        BindEvent ( GetButton((int)Define.UI_MainMenuButton.ExitButton).gameObject, OnClickedExitButton, Define.UIEvent.Click);
+        BindEvent(GetButton((int)Define.UI_MainMenuButton.StartButton).gameObject, OnClickedStartButton, Define.UIEvent.Click);
+        BindEvent(GetButton((int)Define.UI_MainMenuButton.LeaderBoardButton).gameObject, OnClickedLeaderBoardButton, Define.UIEvent.Click);
+        BindEvent(GetButton((int)Define.UI_MainMenuButton.ExitButton).gameObject, OnClickedExitButton, Define.UIEvent.Click);
 
-        _backGround = Util.FindChild(gameObject, "BackGround");
-        
-
-        string[] animalNames = Enum.GetNames(typeof(Define.Animals));
-
-        float   row = 300.0f;
-        int     col = 1;
-        float   padding = 30.0f;
-
-        for (int i = 0; i < (int)Define.Animals.END - 1; ++i)
-        {
-            UI_Scene go = Managers.UI.MakeSubItem<UI_Scene>(_backGround.transform, animalNames[i]);
-            Managers.UI.SetAnimalPopupUI(i, go);
-            Managers.UI.GetAnimalPopupUI(i).GetComponent<RectTransform>().position = new Vector2(col * padding, row);
-            ++col;
-
-            if (i%7 == 0)
-            {
-                col  = 1;
-                row -= 50.0f;
-            }
-            
-        }
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void OnClickedStartButton(PointerEventData data)
@@ -99,10 +68,5 @@ public class UI_MainMenu : UI_Scene
         #else
         Application.Quit();
         #endif
-    }
-
-    void SelectAnimalSprite()
-    {
-        
     }
 }

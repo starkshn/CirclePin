@@ -40,6 +40,9 @@ public class GameScene : BaseScene
         //BannerAd ad = adGo.GetComponent<BannerAd>();
         //ad.LoadAd();
         //_stageManager.GetComponent<StageManager>().SetUp(_target, p_pinSpawner, _targetTextUI);
+
+        // Managers.Sound.Play("BGM/BGM",Define.Sound.Bgm);
+        
     }
 
     public override void Clear()

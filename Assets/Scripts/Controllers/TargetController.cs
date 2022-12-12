@@ -44,6 +44,7 @@ public class TargetController : CreatureController
     {
 
     }
+
     public void Stop()
     {
         _rotateSpeed = 0;
